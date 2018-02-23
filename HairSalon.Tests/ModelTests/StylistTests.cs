@@ -36,7 +36,7 @@ namespace HairSalonProject.Tests
     {
       //Arrange
       Stylist testStylist = new Stylist
-      ("John Smith", "js@gmail.com", "03/14/17");
+      ("John Smith", "js@gmail.com", "03 14 17");
 
       //Act
       testStylist.Save();
@@ -47,6 +47,7 @@ namespace HairSalonProject.Tests
 
       //Assert
       Assert.AreEqual(result, testId);
+    }
 
 
     [TestMethod]
@@ -54,14 +55,15 @@ namespace HairSalonProject.Tests
     {
       //Arrange
       Stylist testStylist = new Stylist
-      ("John Smith", "js@gmail.com", "03/14/17", 0);
+      ("John Smith", "js@gmail.com", "03 14 17");
       int expectedResult = 1;
       //Act
       testStylist.Save();
       int actualResult = Stylist.GetAll().Count;
       //Assert
       Assert.AreEqual(expectedResult, actualResult);
+      Console.WriteLine(expectedResult);
+      Console.WriteLine(actualResult);
     }
-
   }
 }

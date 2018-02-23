@@ -12,7 +12,7 @@ namespace HairSalonProject.Models
     private string _email;
     private string _startdate;
 
-    public Stylist(string Name, string Email, string StartDate, int Id)
+    public Stylist(string Name, string Email, string StartDate, int Id=0)
     {
       this._id = Id;
       this._name = Name;
@@ -23,7 +23,7 @@ namespace HairSalonProject.Models
     //_id getter/setter
     public int GetId()
     {
-      return _id = 0;
+      return _id;
     }
     public void SetId(int newId)
     {
@@ -60,11 +60,28 @@ namespace HairSalonProject.Models
       _startdate = newStartDate;
     }
 
+
+    public override bool Equals(System.Object otherStylist)
+    {
+      if (!(otherStylist is Stylist))
+      {
+        return false;
+      }
+      else
+      {
+        Stylist newStylist = (Stylist) otherStylist;
+        bool idEquality = (this.GetId() == newStylist.GetId());
+        //every test checking for equality must be put here...
+        return (idEquality);
+      }
+    }
+
     public static List<Stylist> GetAll()
     {
       List<Stylist> allStylists = new List<Stylist>();
       MySqlConnection conn = DB.Connection();
       conn.Open();
+      // var cmd = conn.CreateCommand() as MySqlCommand;
       MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
       cmd.CommandText = @"SELECT * FROM stylist;";
       MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
@@ -86,13 +103,61 @@ namespace HairSalonProject.Models
       return allStylists;
     }
 
-    public static List<Stylist> Save()
+
+    public void Save()
     {
-      List<Stylist> allStylists = new List<Stylist>();
-      return allStylists;
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+
+      var cmd = conn.CreateCommand() as MySqlCommand;
+
+      //_id
+      cmd.CommandText = @"INSERT INTO stylist (id)
+      VALUES (@stylistId);";
+
+      MySqlParameter id = new MySqlParameter();
+      id.ParameterName = "@stylistId";
+      id.Value = this._id;
+      cmd.Parameters.Add(id);
+
+      //_name
+      cmd.CommandText = @"INSERT INTO stylist (name)
+      VALUES (@stylistName);";
+
+      MySqlParameter name = new MySqlParameter();
+      name.ParameterName = "@stylistName";
+      name.Value = this._name;
+      cmd.Parameters.Add(name);
+
+      //_email
+      cmd.CommandText = @"INSERT INTO stylist (email)
+      VALUES (@stylistEmail);";
+
+      MySqlParameter email = new MySqlParameter();
+      email.ParameterName = "@stylistEmail";
+      email.Value = this._email;
+      cmd.Parameters.Add(email);
+
+      //_startdate
+      cmd.CommandText = @"INSERT INTO stylist (startdate)
+      VALUES (@stylistStartDate);";
+
+      MySqlParameter startdate = new MySqlParameter();
+      startdate.ParameterName = "@stylistStartDate";
+      startdate.Value = this._startdate;
+      cmd.Parameters.Add(startdate);
+
+      cmd.ExecuteNonQuery();
+      _id = (int) cmd.LastInsertedId;
+
+      conn.Close();
+      if(conn != null)
+      {
+        conn.Dispose();
+      }
     }
 
-  }
 
+  }
 
 }
