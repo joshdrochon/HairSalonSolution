@@ -32,6 +32,24 @@ namespace HairSalonProject.Tests
     }
 
     [TestMethod]
+    public void Save_AssignsIdToObject_Id()
+    {
+      //Arrange
+      Stylist testStylist = new Stylist
+      ("John Smith", "js@gmail.com", "03/14/17");
+
+      //Act
+      testStylist.Save();
+      Stylist savedStylist = Stylist.GetAll()[0];
+
+      int result = savedStylist.GetId();
+      int testId = testStylist.GetId();
+
+      //Assert
+      Assert.AreEqual(result, testId);
+
+
+    [TestMethod]
     public void Save_SavesToDataBase_Stylist()
     {
       //Arrange
@@ -39,12 +57,11 @@ namespace HairSalonProject.Tests
       ("John Smith", "js@gmail.com", "03/14/17", 0);
       int expectedResult = 1;
       //Act
-      Stylist.Save();
+      testStylist.Save();
       int actualResult = Stylist.GetAll().Count;
       //Assert
       Assert.AreEqual(expectedResult, actualResult);
     }
-
 
   }
 }
