@@ -1,0 +1,4 @@
+/Users/Guest/Desktop/HairSalon.Solution/HairSalon.Tests/bin/Debug/netcoreapp1.1/HairSalonTests.deps.json
+/Users/Guest/Desktop/HairSalon.Solution/HairSalon.Tests/bin/Debug/netcoreapp1.1/HairSalonTests.runtimeconfig.json
+/Users/Guest/Desktop/HairSalon.Solution/HairSalon.Tests/bin/Debug/netcoreapp1.1/HairSalonTests.runtimeconfig.dev.json
+/Users/Guest/Desktop/HairSalon.Solution/HairSalon.Tests/obj/Debug/netcoreapp1.1/HairSalonTests.AssemblyInfo.cs
