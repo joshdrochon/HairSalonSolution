@@ -1,3 +1,4 @@
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using HairSalonProject.Models;
 using HairSalonProject;
@@ -10,13 +11,13 @@ namespace HairSalonProject.Tests
   {
     public void Dispose()
     {
-      Stylist.DeleteAll();
+      // Stylist.DeleteAll();
     }
 
     public StylistTests()
     {
       DBConfiguration.ConnectionString =
-      "server=localhost;user id=root;password=root;port=8889;database=world_test;";
+      "server=localhost;user id=root;password=root;port=8889;database=josh_rochon_test;";
     }
 
 
