@@ -12,7 +12,7 @@ namespace HairSalonProject.Models
     private string _email;
     private string _startdate;
 
-    public Stylist(int Id, string Name, string Email, string StartDate)
+    public Stylist(string Name, string Email, string StartDate, int Id)
     {
       this._id = Id;
       this._name = Name;
@@ -75,7 +75,7 @@ namespace HairSalonProject.Models
         string stylistEmail = rdr.GetString(2);
         string stylistStartDate = rdr.GetString(3);
         Stylist newStylist = new Stylist
-        (stylistId, stylistName, stylistEmail, stylistStartDate);
+        (stylistName, stylistEmail, stylistStartDate, stylistId);
         allStylists.Add(newStylist);
       }
       conn.Close();
@@ -83,6 +83,12 @@ namespace HairSalonProject.Models
       {
         conn.Dispose();
       }
+      return allStylists;
+    }
+
+    public static List<Stylist> Save()
+    {
+      List<Stylist> allStylists = new List<Stylist>();
       return allStylists;
     }
 
