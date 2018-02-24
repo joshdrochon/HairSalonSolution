@@ -36,7 +36,7 @@ namespace HairSalonProject.Tests
     {
       //Arrange
       Stylist testStylist = new Stylist
-      ("John Smith", "js@gmail.com", "03 14 17");
+      ("Yoda", "Yoda@gmail.com", "03/14/18");
 
       //Act
       testStylist.Save();
@@ -55,7 +55,7 @@ namespace HairSalonProject.Tests
     {
       //Arrange
       Stylist testStylist = new Stylist
-      ("John Smith", "js@gmail.com", "03 14 17");
+      ("Luke Skywalker", "Skywalker@gmail.com", "03/14/17");
       int expectedResult = 1;
       //Act
       testStylist.Save();

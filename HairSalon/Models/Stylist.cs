@@ -81,7 +81,6 @@ namespace HairSalonProject.Models
       List<Stylist> allStylists = new List<Stylist>();
       MySqlConnection conn = DB.Connection();
       conn.Open();
-      // var cmd = conn.CreateCommand() as MySqlCommand;
       MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
       cmd.CommandText = @"SELECT * FROM stylist;";
       MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
@@ -111,36 +110,23 @@ namespace HairSalonProject.Models
 
       var cmd = conn.CreateCommand() as MySqlCommand;
 
-      //_id
-      cmd.CommandText = @"INSERT INTO stylist (id)
-      VALUES (@stylistId);";
+      cmd.CommandText = @"INSERT INTO stylist (id, name, email, startdate)
+      VALUES (@stylistId, @stylistName, @stylistEmail, @stylistStartDate);";
 
       MySqlParameter id = new MySqlParameter();
       id.ParameterName = "@stylistId";
       id.Value = this._id;
       cmd.Parameters.Add(id);
 
-      //_name
-      cmd.CommandText = @"INSERT INTO stylist (name)
-      VALUES (@stylistName);";
-
       MySqlParameter name = new MySqlParameter();
       name.ParameterName = "@stylistName";
       name.Value = this._name;
       cmd.Parameters.Add(name);
 
-      //_email
-      cmd.CommandText = @"INSERT INTO stylist (email)
-      VALUES (@stylistEmail);";
-
       MySqlParameter email = new MySqlParameter();
       email.ParameterName = "@stylistEmail";
       email.Value = this._email;
       cmd.Parameters.Add(email);
-
-      //_startdate
-      cmd.CommandText = @"INSERT INTO stylist (startdate)
-      VALUES (@stylistStartDate);";
 
       MySqlParameter startdate = new MySqlParameter();
       startdate.ParameterName = "@stylistStartDate";
@@ -159,5 +145,4 @@ namespace HairSalonProject.Models
 
 
   }
-
 }
