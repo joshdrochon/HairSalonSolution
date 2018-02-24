@@ -16,7 +16,7 @@ namespace HairSalonProject.Controllers
         }
 
         // [HttpGet("/stylists/new")]
-        // public ActionResult CreateForm()
+        // public ActionResult NewStylistForm()
         // {
         //     return View();
         // }
@@ -38,7 +38,7 @@ namespace HairSalonProject.Controllers
         // }
         //
         // [HttpGet("/styles/{id}")]
-        // public ActionResult Details(int id)
+        // public ActionResult StylistDetails(int id)
         // {
         //     Stylist stylist = Stylist.Find(id);
         //     return View(Stylist);
