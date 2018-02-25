@@ -1,0 +1,29 @@
+<style media="screen">
+
+  li{
+    list-style-type: none;
+    background-color: lightgreen;
+    display: inline;
+    padding: 10px;
+    font-family: helvetica;
+    border-radius: 10px;
+  }
+
+</style>
+
+
+<!--each new list item is an instance of the Stylist class-->
+
+<h1>Clients</h1>
+<ul>
+  @foreach (var client in Model)
+  {
+    <li><a href='/clients/@client.GetId()'>@client.GetName()</a></li>
+  }
+</ul>
+<p><a href="/clients/new">Add Client</a></p>
+<form action="/clients/delete" method="post">
+  <button type="submit" name="button">Clear all Clients</button>
+</form>
+
+<p><a href="/">Home</a></p>

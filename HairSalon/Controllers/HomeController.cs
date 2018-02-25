@@ -8,12 +8,13 @@ namespace HairSalonProject.Controllers
 {
     public class HomeController : Controller
     {
-
         [HttpGet("/")]
         public ActionResult Index()
         {
             return View(Stylist.GetAll());
         }
+
+        //Stylist Controllers
 
         [HttpGet("/stylists/new")]
         public ActionResult NewStylistForm()
@@ -22,7 +23,7 @@ namespace HairSalonProject.Controllers
         }
 
         [HttpPost("/stylists")]
-        public ActionResult Create()
+        public ActionResult CreateStylist()
         {
             Stylist newStylist = new Stylist
             (Request.Form["stylist-name"],
@@ -37,7 +38,7 @@ namespace HairSalonProject.Controllers
         }
 
         [HttpPost("/stylists/delete")]
-        public ActionResult DeleteAll()
+        public ActionResult DeleteAllStylists()
         {
             Stylist.DeleteAll();
             return View(); //if not defined, attempts to map method name to a page w/ the same name
@@ -49,6 +50,50 @@ namespace HairSalonProject.Controllers
             Stylist stylist = Stylist.Find(id);
             return View(stylist);
         }
+
+        //Client Controllers
+
+        [HttpGet("/clients/new")]
+        public ActionResult NewClientForm()
+        {
+            return View();
+        }
+
+        [HttpPost("/clients")]
+        public ActionResult CreateClient()
+        {
+            Client newClient = new Client
+            (Request.Form["client-name"],
+             Request.Form["client-email"],
+             Request.Form["client-first-appt"]);
+
+             newClient.Save(); //must save to database  for getAll method to grab it
+
+             List<Client> allClients = Client.GetAll();
+
+            return View("AllClients", allClients);
+        }
+
+        [HttpPost("/clients/delete")]
+        public ActionResult DeleteAllClients()
+        {
+            Client.DeleteAll();
+            return View(); //if not defined, attempts to map method name to a page w/ the same name
+        }
+
+        [HttpGet("/clients/{id}")]
+        public ActionResult ClientDetails(int id)
+        {
+            Client client = Client.Find(id);
+            return View(client);
+        }
+
+        [HttpGet("/clients")]
+        public ActionResult AllClients()
+        {
+            return View(Client.GetAll());
+        }
+
 
     }
 }
