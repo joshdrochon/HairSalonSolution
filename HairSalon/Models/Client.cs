@@ -162,8 +162,41 @@ namespace HairSalonProject.Models
 
     public static Client Find(int id)
     {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"SELECT * FROM client WHERE id = @thisId;";
+
+      MySqlParameter thisId = new MySqlParameter();
+      thisId.ParameterName = "@thisId";
+      thisId.Value = id;
+      cmd.Parameters.Add(thisId);
+
+      var rdr = cmd.ExecuteReader() as MySqlDataReader;
+
+      int clientId = 0;
+      string clientName = "";
+      string clientEmail = "";
+      string clientFirstAppt = "";
+
+      while(rdr.Read())
+      {
+        //arguments in rdr methods correspond to index of the table rows
+        clientId = rdr.GetInt32(0);
+        clientName = rdr.GetString(1);
+        clientEmail = rdr.GetString(2);
+        clientFirstAppt = rdr.GetString(3);
+      }
+
       Client foundClient = new Client
-      ("Reese WitherFork", "ForkR@gmail.com", "02/29/2000");
+      (clientName, clientEmail, clientFirstAppt, clientId);
+
+      conn.Close();
+      if(conn != null)
+      {
+        conn.Dispose();
+      }
 
       return foundClient;
     }
