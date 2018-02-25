@@ -1,6 +1,8 @@
-<h1>@Model.GetName</h1>
-<h1>@Model.GetEmail</h1>
-<h1>@Model.GetStartDate</h1>
+<p><text>Name: </text>@Model.GetName()</p>
+<p><text>Email: </text>@Model.GetEmail()</p>
+<p><text>Startdate: </text>@Model.GetStartDate()</p>
 
-<a href='/stylists/new'>Add another stylist</a>
-<a href='/stylists'>View all Stylists</a>
+<a href='/stylists/new'>Add stylist</a>
+<a href='/'>Go back!</a>
+
+<!-- Model refers to whatever is passed into the View's parameters. In this case it's return View(stylist); -->

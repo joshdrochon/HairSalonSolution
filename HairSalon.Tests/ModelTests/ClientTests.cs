@@ -65,5 +65,18 @@ namespace HairSalonProject.Tests
       Console.WriteLine(expectedResult);
       Console.WriteLine(actualResult);
     }
+
+    [TestMethod]
+    public void Find_FindsClientInDatabase_Client()
+    {
+      //Arrange
+      Client testClient = new Client
+      ("Reese WitherFork", "ForkR@gmail.com", "02/29/2000");
+      testClient.Save();
+      //Act
+      Client foundClient = Client.Find(testClient.GetId());
+      //Assert
+      Assert.AreEqual(testClient, foundClient);
+    }
   }
 }

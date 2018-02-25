@@ -43,7 +43,7 @@ namespace HairSalonProject.Controllers
             return View(); //if not defined, attempts to map method name to a page w/ the same name
         }
 
-        [HttpGet("/styles/{id}")]
+        [HttpGet("/stylists/{id}")]
         public ActionResult StylistDetails(int id)
         {
             Stylist stylist = Stylist.Find(id);

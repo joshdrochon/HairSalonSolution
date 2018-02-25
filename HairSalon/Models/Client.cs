@@ -160,6 +160,14 @@ namespace HairSalonProject.Models
       }
     }
 
+    public static Client Find(int id)
+    {
+      Client foundClient = new Client
+      ("Reese WitherFork", "ForkR@gmail.com", "02/29/2000");
+
+      return foundClient;
+    }
+
 
   }
 }

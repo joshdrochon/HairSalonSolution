@@ -2,8 +2,8 @@
 <h1>Stylists</h1>
 <h2>Add a new stylist:</h2>
 <form action="/stylists" method="post">
-  Name: <input name="stylist-name" type="text">
-  Email: <input name="stylist-email" type="text">
-  StartDate: <input name="stylist-startdate" type="text" value="mm/dd/yyyy">
+  Name: <input name="stylist-name" type="text" required>
+  Email: <input name="stylist-email" type="email" required>
+  StartDate: <input name="stylist-startdate" type="date" required>
   <button type="submit">Add Stylist</button>
 </form>
