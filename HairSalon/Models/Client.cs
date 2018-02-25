@@ -14,14 +14,14 @@ namespace HairSalonProject.Models
 
     private int _stylistId;
 
-    public Client(string Name, string Email, string FirstAppt, int CategoryId, int Id=0)
+    public Client(string Name, string Email, string FirstAppt, int StylistId=0, int Id=0)
     {
       this._id = Id;
       this._name = Name;
       this._email = Email;
       this._firstappt = FirstAppt;
 
-      this._stylistId = CategoryId;
+      this._stylistId = StylistId;
     }
 
     //_id getter/setter

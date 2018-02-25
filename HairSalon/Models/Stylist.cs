@@ -76,6 +76,12 @@ namespace HairSalonProject.Models
       }
     }
 
+    public List<Client> GetClients()
+    {
+      List<Client> allStylistClients = new List<Client>{};
+      return allStylistClients;
+    }
+
     public static List<Stylist> GetAll()
     {
       List<Stylist> allStylists = new List<Stylist>();
