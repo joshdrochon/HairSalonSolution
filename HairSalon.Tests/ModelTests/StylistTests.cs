@@ -65,5 +65,18 @@ namespace HairSalonProject.Tests
       Console.WriteLine(expectedResult);
       Console.WriteLine(actualResult);
     }
+
+    [TestMethod]
+    public void Find_FindsStylestInDatabase_Stylist()
+    {
+      //Arrange
+      Stylist testStylist = new Stylist
+      ("Jack Sparrow", "SparrowMe@gmail.com", "04/12/1999");
+      testStylist.Save();
+      //Act
+      Stylist foundStylist = Stylist.Find(testStylist.GetId());
+      //Assert
+      Assert.AreEqual(testStylist, foundStylist);
+    }
   }
 }

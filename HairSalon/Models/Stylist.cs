@@ -160,6 +160,14 @@ namespace HairSalonProject.Models
       }
     }
 
+    public static Stylist Find(int id)
+    {
+      Stylist foundStylist = new Stylist
+      ("JD Salinger", "jd@uw.edu", "02/22/18");
+
+      return foundStylist;
+    }
+
 
   }
 }
