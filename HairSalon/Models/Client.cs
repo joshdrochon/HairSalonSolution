@@ -12,12 +12,16 @@ namespace HairSalonProject.Models
     private string _email;
     private string _firstappt;
 
-    public Client(string Name, string Email, string FirstAppt, int Id=0)
+    private int _stylistId;
+
+    public Client(string Name, string Email, string FirstAppt, int CategoryId, int Id=0)
     {
       this._id = Id;
       this._name = Name;
       this._email = Email;
       this._firstappt = FirstAppt;
+
+      this._stylistId = CategoryId;
     }
 
     //_id getter/setter
@@ -60,6 +64,11 @@ namespace HairSalonProject.Models
       _firstappt = newFirstAppt;
     }
 
+    public int GetStylistId()
+    {
+      return _stylistId;
+    }
+
 
     public override bool Equals(System.Object otherClient)
     {
@@ -71,6 +80,7 @@ namespace HairSalonProject.Models
       {
         Client newClient = (Client) otherClient;
         bool idEquality = (this.GetId() == newClient.GetId());
+        bool stylistEquality = this.GetStylistId() == newClient.GetStylistId();
         //every test checking for equality must be put here...
         return (idEquality);
       }
@@ -90,8 +100,10 @@ namespace HairSalonProject.Models
         string clientName = rdr.GetString(1);
         string clientEmail = rdr.GetString(2);
         string clientFirstAppt = rdr.GetString(3);
+        int clientStylistId = rdr.GetInt32(4);
+
         Client newClient = new Client
-        (clientName, clientEmail, clientFirstAppt, clientId);
+        (clientName, clientEmail, clientFirstAppt, clientStylistId, clientId);
         allClients.Add(newClient);
       }
       conn.Close();
@@ -110,8 +122,8 @@ namespace HairSalonProject.Models
 
       var cmd = conn.CreateCommand() as MySqlCommand;
 
-      cmd.CommandText = @"INSERT INTO client (id, name, email, firstappt)
-      VALUES (@clientId, @clientName, @clientEmail, @clientFirstAppt);";
+      cmd.CommandText = @"INSERT INTO client (id, name, email, firstappt, stylist_id)
+      VALUES (@clientId, @clientName, @clientEmail, @clientFirstAppt, @stylist_id);";
 
       MySqlParameter id = new MySqlParameter();
       id.ParameterName = "@clientId";
@@ -132,6 +144,11 @@ namespace HairSalonProject.Models
       firstappt.ParameterName = "@clientFirstAppt";
       firstappt.Value = this._firstappt;
       cmd.Parameters.Add(firstappt);
+
+      MySqlParameter stylist_id = new MySqlParameter();
+      stylist_id.ParameterName = "@stylist_id";
+      stylist_id.Value = this._stylistId;
+      cmd.Parameters.Add(stylist_id);
 
       cmd.ExecuteNonQuery();
       _id = (int) cmd.LastInsertedId;
@@ -179,6 +196,7 @@ namespace HairSalonProject.Models
       string clientName = "";
       string clientEmail = "";
       string clientFirstAppt = "";
+      int clientStylistId = 0;
 
       while(rdr.Read())
       {
@@ -187,6 +205,7 @@ namespace HairSalonProject.Models
         clientName = rdr.GetString(1);
         clientEmail = rdr.GetString(2);
         clientFirstAppt = rdr.GetString(3);
+        clientStylistId = rdr.GetInt32(4);
       }
 
       Client foundClient = new Client
