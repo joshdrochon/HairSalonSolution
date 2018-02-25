@@ -29,20 +29,20 @@ namespace HairSalonProject.Controllers
              Request.Form["stylist-email"],
              Request.Form["stylist-startdate"]);
 
-             newStylist.Save();
+             newStylist.Save(); //must save to database  for getAll method to grab it
 
              List<Stylist> allStylists = Stylist.GetAll();
 
             return View("Index", allStylists);
         }
-        //
-        // [HttpPost("/stylists/delete")]
-        // public ActionResult DeleteAll()
-        // {
-        //     Stylist.ClearAll();
-        //     return View();
-        // }
-        //
+
+        [HttpPost("/stylists/delete")]
+        public ActionResult DeleteAll()
+        {
+            Stylist.DeleteAll();
+            return View(); //if not defined, attempts to map method name to a page w/ the same name
+        }
+
         // [HttpGet("/styles/{id}")]
         // public ActionResult StylistDetails(int id)
         // {
