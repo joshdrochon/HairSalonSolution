@@ -162,8 +162,41 @@ namespace HairSalonProject.Models
 
     public static Stylist Find(int id)
     {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"SELECT * FROM stylist WHERE id = @thisId;";
+
+      MySqlParameter thisId = new MySqlParameter();
+      thisId.ParameterName = "@thisId";
+      thisId.Value = id;
+      cmd.Parameters.Add(thisId);
+
+      var rdr = cmd.ExecuteReader() as MySqlDataReader;
+
+      int stylistId = 0;
+      string stylistName = "";
+      string stylistEmail = "";
+      string stylistStartDate = "";
+
+      while(rdr.Read())
+      {
+        //arguments in rdr methods correspond to index of the table rows
+        stylistId = rdr.GetInt32(0);
+        stylistName = rdr.GetString(1);
+        stylistEmail = rdr.GetString(2);
+        stylistStartDate = rdr.GetString(3);
+      }
+
       Stylist foundStylist = new Stylist
-      ("JD Salinger", "jd@uw.edu", "02/22/18");
+      (stylistName, stylistEmail, stylistStartDate, stylistId);
+
+      conn.Close();
+      if(conn != null)
+      {
+        conn.Dispose();
+      }
 
       return foundStylist;
     }
