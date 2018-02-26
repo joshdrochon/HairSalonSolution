@@ -1,29 +1,24 @@
-<style media="screen">
-
-  li{
-    list-style-type: none;
-    background-color: lightgreen;
-    display: inline;
-    padding: 10px;
-    font-family: helvetica;
-    border-radius: 10px;
-  }
-
-</style>
-
+@{
+  Layout = "_Layout";
+}
 
 <!--each new list item is an instance of the Stylist class-->
+<header>
+  <a id="all-clients" href="/clients">View all clients</a>
+</header>
+<div class="jumbotron">
+  <h1>Stylists</h1>
+  <ul>
+    @foreach (var stylist in Model)
+    {
+      <li><a href='/stylists/@stylist.GetId()'>@stylist.GetName()</a></li>
+    }
+  </ul>
+  <p><a href="/stylists/new">Add Stylist</a></p>
+  <form action="/stylists/delete" method="post">
+    <button class="btn btn-danger" type="submit" name="button">Clear all Stylists</button>
+  </form>
 
-<h1>Stylists</h1>
-<ul>
-  @foreach (var stylist in Model)
-  {
-    <li><a href='/stylists/@stylist.GetId()'>@stylist.GetName()</a></li>
-  }
-</ul>
-<p><a href="/stylists/new">Add Stylist</a></p>
-<form action="/stylists/delete" method="post">
-  <button type="submit" name="button">Clear all Stylists</button>
-</form>
+</div>
 
-<h2><a href="/clients">View all clients</a></h2>
+<!-- RUN - apm install language-cshtml in terminal to override default plain text -->

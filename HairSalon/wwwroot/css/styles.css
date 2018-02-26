@@ -1,0 +1,12 @@
+li{
+    list-style-type: none;
+    background-color: lightgreen;
+    display: inline;
+    padding: 10px;
+    font-family: helvetica;
+    border-radius: 10px;
+  }
+
+#all-clients{
+  float: right;
+}
