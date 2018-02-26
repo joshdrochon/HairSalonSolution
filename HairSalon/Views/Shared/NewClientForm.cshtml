@@ -3,5 +3,13 @@
   Name: <input name="client-name" type="text" required>
   Email: <input name="client-email" type="email" required>
   First Appt: <input name="client-first-appt" type="date" required>
+
+  Stylist: <select name="client-stylist">
+              @foreach(var stylist in Model)
+              {
+              <option value="@stylist.GetId()">@stylist.GetName()</option>
+              }
+           </select>
+
   <button type="submit">Submit</button>
 </form>

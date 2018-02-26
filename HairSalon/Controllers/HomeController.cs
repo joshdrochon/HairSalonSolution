@@ -56,7 +56,9 @@ namespace HairSalonProject.Controllers
         [HttpGet("/clients/new")]
         public ActionResult NewClientForm()
         {
-            return View();
+            List<Stylist> allStylists = Stylist.GetAll();
+
+            return View(allStylists);
         }
 
         [HttpPost("/clients")]
@@ -65,13 +67,14 @@ namespace HairSalonProject.Controllers
             Client newClient = new Client
             (Request.Form["client-name"],
              Request.Form["client-email"],
-             Request.Form["client-first-appt"]);
+             Request.Form["client-first-appt"],
+             int.Parse(Request.Form["client-stylist"]));
 
              newClient.Save(); //must save to database  for getAll method to grab it
 
              List<Client> allClients = Client.GetAll();
 
-            return View("AllClients", allClients);
+             return View("AllClients", allClients);
         }
 
         [HttpPost("/clients/delete")]
