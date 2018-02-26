@@ -77,6 +77,9 @@ namespace HairSalonProject.Tests
       //Act
       Client foundClient = Client.Find(testClient.GetId());
       //Assert
+      Console.WriteLine("TEST CLIENT ID IS: " + testClient.GetId());
+      Console.WriteLine("FOUND CLIENT IS IS: " + foundClient.GetId());
+
       Assert.AreEqual(testClient, foundClient);
     }
   }

@@ -80,16 +80,9 @@ namespace HairSalonProject.Models
       {
         Client newClient = (Client) otherClient;
         bool idEquality = this.GetId() == newClient.GetId();
-        bool nameEquality = this.GetName() == newClient.GetName();
-        bool emailEqualiy = this.GetEmail() == newClient.GetEmail();
-        bool firstApptEquality = this.GetFirstAppt() == newClient.GetFirstAppt();
-        bool stylistEquality = this.GetStylistId() == newClient.GetStylistId();
 
         return (idEquality);
-        return (nameEquality);
-        return (emailEqualiy);
-        return (firstApptEquality);
-        return (stylistEquality);
+
       }
     }
 
@@ -216,7 +209,7 @@ namespace HairSalonProject.Models
       }
 
       Client foundClient = new Client
-      (clientName, clientEmail, clientFirstAppt, clientId);
+      (clientName, clientEmail, clientFirstAppt, clientStylistId, clientId);
 
       conn.Close();
       if(conn != null)

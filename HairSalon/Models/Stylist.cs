@@ -11,7 +11,6 @@ namespace HairSalonProject.Models
     private string _name;
     private string _email;
     private string _startdate;
-
     public Stylist(string Name, string Email, string StartDate, int Id=0)
     {
       this._id = Id;
@@ -71,7 +70,7 @@ namespace HairSalonProject.Models
       {
         Stylist newStylist = (Stylist) otherStylist;
         bool idEquality = (this.GetId() == newStylist.GetId());
-        //every test checking for equality must be put here...
+
         return (idEquality);
       }
     }
@@ -89,11 +88,6 @@ namespace HairSalonProject.Models
       stylist_id.Value = this._id;
       cmd.Parameters.Add(stylist_id);
 
-      // MySqlParameter stylistId = new MySqlParameter();
-      // stylistId.ParameterName = "@stylist_id";
-      // stylistId.Value = this._id;
-      // cmd.Parameters.Add(stylistId);
-
       var rdr = cmd.ExecuteReader() as MySqlDataReader;
       while(rdr.Read())
       {
@@ -104,6 +98,7 @@ namespace HairSalonProject.Models
         int clientStylistId = rdr.GetInt32(4);
         Client newClient = new Client
         (clientName, clientEmail, clientFirstAppt, clientStylistId, clientId);
+        allStylistClients.Add(newClient);
       }
 
       conn.Close();
