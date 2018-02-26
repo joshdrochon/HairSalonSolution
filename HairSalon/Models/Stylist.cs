@@ -84,16 +84,15 @@ namespace HairSalonProject.Models
       var cmd = conn.CreateCommand() as MySqlCommand;
       cmd.CommandText = @"SELECT * FROM client WHERE stylist_id = @stylist_id;";
 
-      // 
-      // MySqlParameter stylist_id = new MySqlParameter();
-      // stylist_id.ParameterName = "@stylist_id";
-      // stylist_id.Value = this._id;
-      // cmd.Parameters.Add(stylist_id);
+      MySqlParameter stylist_id = new MySqlParameter();
+      stylist_id.ParameterName = "@stylist_id";
+      stylist_id.Value = this._id;
+      cmd.Parameters.Add(stylist_id);
 
-      MySqlParameter stylistId = new MySqlParameter();
-      stylistId.ParameterName = "@stylist_id";
-      stylistId.Value = this._id;
-      cmd.Parameters.Add(stylistId);
+      // MySqlParameter stylistId = new MySqlParameter();
+      // stylistId.ParameterName = "@stylist_id";
+      // stylistId.Value = this._id;
+      // cmd.Parameters.Add(stylistId);
 
       var rdr = cmd.ExecuteReader() as MySqlDataReader;
       while(rdr.Read())

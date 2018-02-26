@@ -79,10 +79,17 @@ namespace HairSalonProject.Models
       else
       {
         Client newClient = (Client) otherClient;
-        bool idEquality = (this.GetId() == newClient.GetId());
+        bool idEquality = this.GetId() == newClient.GetId();
+        bool nameEquality = this.GetName() == newClient.GetName();
+        bool emailEqualiy = this.GetEmail() == newClient.GetEmail();
+        bool firstApptEquality = this.GetFirstAppt() == newClient.GetFirstAppt();
         bool stylistEquality = this.GetStylistId() == newClient.GetStylistId();
-        //every test checking for equality must be put here...
+
         return (idEquality);
+        return (nameEquality);
+        return (emailEqualiy);
+        return (firstApptEquality);
+        return (stylistEquality);
       }
     }
 

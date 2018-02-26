@@ -83,19 +83,24 @@ namespace HairSalonProject.Tests
     [TestMethod]
     public void GetClients_GetsAllClientsWithStylist_ClientList()
     {
+      //create a Stylist object
       Stylist testStylist = new Stylist
       ("Huckleberry Finn", "HuckFinn@gmail.com", "07/07/1939");
       testStylist.Save();
 
+      //create two Client objects and add them to the testStylist via GetId()
       Client firstClient = new Client("Bob", "b1952@uw.edu", "12/25/2049", testStylist.GetId());
       firstClient.Save();
       Client secondClient = new Client("Sam", "Samwise@gmail.com", "N/A", testStylist.GetId());
       secondClient.Save();
-
+      //add both Client objects to a list
       List<Client> testClientList = new List<Client> {firstClient, secondClient};
+      //call GetClient() method on teststylist set equal to a list
       List<Client> resultClientList = testStylist.GetClients();
-
+      //assert both lists are equal and contain 2 client objects
       CollectionAssert.AreEqual(testClientList, resultClientList);
+      // Assert.AreEqual(testClientList.Count, 2);
+
     }
   }
 }
