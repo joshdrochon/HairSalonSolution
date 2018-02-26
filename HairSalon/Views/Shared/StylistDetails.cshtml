@@ -1,6 +1,13 @@
 <p><text>Name: </text>@Model.GetName()</p>
 <p><text>Email: </text>@Model.GetEmail()</p>
 <p><text>Startdate: </text>@Model.GetStartDate()</p>
+<p>Clients:</p>
+<ul>
+  @foreach(var client in Model.GetClients())
+  {
+    <li>@client.GetName()</li>
+  }
+</ul>
 
 
 <h3><a href="/clients/new">Add Client</a><h3>
