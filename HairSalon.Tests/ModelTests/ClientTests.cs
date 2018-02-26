@@ -18,8 +18,7 @@ namespace HairSalonProject.Tests
     public void Dispose()
     {
       Client.DeleteAll();
-
-      Stylist.DeleteAll(); //new line
+      Stylist.DeleteAll();
     }
 
     [TestMethod]
@@ -27,7 +26,7 @@ namespace HairSalonProject.Tests
     {
       //Arrange, Act
       int result = Client.GetAll().Count;
-      Console.WriteLine("Line 29 " + result);
+      Console.WriteLine("In line 29 in ClientTests there are " + result + " in the database.");
       //Assert
       Assert.AreEqual(0, result);
     }
@@ -39,7 +38,7 @@ namespace HairSalonProject.Tests
       //Arrange
       Client testClient = new Client
       ("Kilo Ren", "Kilo17@gmail.com", "06/12/12", 1);
-      int expectedResult = 1; //one client in database
+      int expectedResult = 1; //one client expected in database
       //Act
       testClient.Save();
       int actualResult = Client.GetAll().Count;
