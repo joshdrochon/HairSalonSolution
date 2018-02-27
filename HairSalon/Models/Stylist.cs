@@ -76,10 +76,10 @@ namespace HairSalonProject.Models
 
     public List<Client> GetClients()
     {
-      List<Client> allStylistClients = new List<Client>{};
       MySqlConnection conn = DB.Connection();
       conn.Open();
       var cmd = conn.CreateCommand() as MySqlCommand;
+      //says select all from client where client's stylist_id = Stylist._id
       cmd.CommandText = @"SELECT * FROM client WHERE stylist_id = @stylist_id;";
 
       MySqlParameter stylist_id = new MySqlParameter();
@@ -88,6 +88,8 @@ namespace HairSalonProject.Models
       cmd.Parameters.Add(stylist_id);
 
       var rdr = cmd.ExecuteReader() as MySqlDataReader;
+
+      List<Client> allStylistClients = new List<Client>{};
       while(rdr.Read())
       {
         int clientId = rdr.GetInt32(0);
