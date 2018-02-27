@@ -219,6 +219,47 @@ namespace HairSalonProject.Models
       return foundClient;
     }
 
+    public Stylist GetStylist()
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"SELECT * FROM stylist WHERE id = @stylist_id;";
+
+      MySqlParameter id = new MySqlParameter();
+      id .ParameterName = "@stylist_id";
+      id.Value = this._stylistId;
+      cmd.Parameters.Add(id);
+
+      int clientStylistId = 0;
+      string clientStylistName = "";
+      string clientStylistEmail = "";
+      string clientStylistStartDate = "";
+
+      var rdr = cmd.ExecuteReader() as MySqlDataReader;
+      while(rdr.Read())
+      {
+        clientStylistId = rdr.GetInt32(0);
+        clientStylistName = rdr.GetString(1);
+        clientStylistEmail = rdr.GetString(2);
+        clientStylistStartDate = rdr.GetString(3);
+      }
+      Stylist clientStylist = new Stylist
+      (clientStylistName, clientStylistEmail, clientStylistStartDate, clientStylistId);
+      conn.Close();
+      if(conn != null)
+      {
+        conn.Dispose();
+      }
+      return clientStylist;
+    }
+
+
+
+
+
+
+
   }
 }
 

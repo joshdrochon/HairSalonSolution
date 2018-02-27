@@ -2,6 +2,8 @@
 
 @{
   Layout = "_Layout";
+  Stylist preferredStylist = Model.GetStylist();
+  string clientName = preferredStylist.GetName();
 }
 
 <div class="jumbotron">
@@ -9,7 +11,8 @@
   <p><text>Name: </text>@Model.GetName()</p>
   <p><text>Email: </text>@Model.GetEmail()</p>
   <p><text>First Appt: </text>@Model.GetFirstAppt()</p>
-  <p><text>Stylist #: </text>@Model.GetStylistId()</p>
+  <hr>
+  <p><text>Preferred Stylist: </text>@clientName</p>
 </div>
 
 <!-- <a href='/clients/new'>Add stylist</a> -->
