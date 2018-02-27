@@ -59,7 +59,6 @@ namespace HairSalonProject.Models
       _startdate = newStartDate;
     }
 
-
     public override bool Equals(System.Object otherStylist)
     {
       if (!(otherStylist is Stylist))
@@ -95,9 +94,8 @@ namespace HairSalonProject.Models
         string clientName = rdr.GetString(1);
         string clientEmail = rdr.GetString(2);
         string clientFirstAppt = rdr.GetString(3);
-        int clientStylistId = rdr.GetInt32(4);
         Client newClient = new Client
-        (clientName, clientEmail, clientFirstAppt, clientStylistId, clientId);
+        (clientName, clientEmail, clientFirstAppt, clientId);
         allStylistClients.Add(newClient);
       }
 
@@ -212,6 +210,7 @@ namespace HairSalonProject.Models
       string stylistName = "";
       string stylistEmail = "";
       string stylistStartDate = "";
+
 
       while(rdr.Read())
       {

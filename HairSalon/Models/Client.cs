@@ -114,7 +114,6 @@ namespace HairSalonProject.Models
       return allClients;
     }
 
-
     public void Save()
     {
       MySqlConnection conn = DB.Connection();
@@ -219,7 +218,6 @@ namespace HairSalonProject.Models
 
       return foundClient;
     }
-
 
   }
 }

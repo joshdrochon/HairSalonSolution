@@ -82,5 +82,6 @@ namespace HairSalonProject.Tests
 
       Assert.AreEqual(testClient, foundClient);
     }
+
   }
 }
