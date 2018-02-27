@@ -13,7 +13,18 @@
 </div>
 
 <div class="footer">
-  <form action="/clients/delete" method="post">
-    <button id="clear-clients" class="btn btn-danger" type="submit" name="button">Clear all Clients</button>
+  <form action="/clients/delete" method="post" id="clear-clients">
+    <button class="btn btn-danger" type="submit" name="button">Clear all Clients</button>
   </form>
 </div>
+
+<script>
+  $(document).ready(function(){
+    $("#clear-clients").submit(function(event) {
+      var doDelete = confirm("Are you sure you want delete all clients?");
+      if (!doDelete) {
+        event.preventDefault();
+      }
+    });
+  });
+</script>
