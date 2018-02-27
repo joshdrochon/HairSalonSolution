@@ -3,22 +3,30 @@
 }
 
 <!--each new list item is an instance of the Stylist class-->
-<header>
-  <a id="all-clients" href="/clients">View all clients</a>
-</header>
 <div class="jumbotron">
+  <a id="all-clients" href="/clients">View all clients</a>
   <h1>Stylists</h1>
-  <ul>
     @foreach (var stylist in Model)
     {
-      <li><a href='/stylists/@stylist.GetId()'>@stylist.GetName()</a></li>
+      <h3 id="stylist-list"><a href='/stylists/@stylist.GetId()'>@stylist.GetName()</a></h3>
     }
-  </ul>
   <p><a href="/stylists/new">Add Stylist</a></p>
-  <form action="/stylists/delete" method="post">
-    <button class="btn btn-danger" type="submit" name="button">Clear all Stylists</button>
-  </form>
-
 </div>
+<div class="footer">
+  <form action="/stylists/delete" method="post">
+    <button id="clear-stylists" class="btn btn-danger" type="submit" name="button">Clear all Stylists</button>
+  </form>
+</div>
+
+
+<script>
+  $(document).ready(function(event){
+    $("#clear-stylists").Click(function){
+      event.PreventDefault();
+      alert("Are you sure you want to go through with this?");
+    });
+  });
+
+</script>
 
 <!-- RUN - apm install language-cshtml in terminal to override default plain text -->

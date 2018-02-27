@@ -1,12 +1,38 @@
-li{
+{
+  border: 1px dotted red;
+}
+
+body{
+  background-color: #7E8F7C;
+}
+
+#stylist-list{
     list-style-type: none;
-    background-color: lightgreen;
-    display: inline;
-    padding: 10px;
-    font-family: helvetica;
-    border-radius: 10px;
+    color: white;
+    margin: auto;
+    margin: 20px;
   }
 
+#client-list{
+  color: white;
+  margin: auto;
+  margin: 20px;
+}
+
 #all-clients{
-  float: right;
+  color: darkgray;
+}
+
+form{
+  text-align: center;
+}
+
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #7E8F7C;
+  text-align: center;
 }
