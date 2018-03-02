@@ -21,7 +21,6 @@ namespace HairSalonProject.Tests
       "server=localhost;user id=root;password=root;port=8889;database=josh_rochon_test;";
     }
 
-
     [TestMethod]
     public void GetAll_DatabaseEmptyAtFirst_0()
     {
@@ -85,7 +84,7 @@ namespace HairSalonProject.Tests
     {
       //create a Stylist object
       Stylist testStylist = new Stylist
-      ("Huckleberry Finn", "HuckFinn@gmail.com", "07/07/1939");
+      ("Name", "Email", "StartDate");
       testStylist.Save();
 
       //create two Client objects and add them to the testStylist via GetId()
@@ -98,8 +97,8 @@ namespace HairSalonProject.Tests
       //call GetClient() method on teststylist set equal to a list
       List<Client> resultClientList = testStylist.GetClients();
       //assert both lists are equal and contain 2 client objects
-      CollectionAssert.AreEqual(testClientList, resultClientList);
-      // Assert.AreEqual(testClientList.Count, 2);
+      // CollectionAssert.AreEqual(testClientList, resultClientList);
+      Assert.AreEqual(resultClientList.Count, 2);
 
     }
   }

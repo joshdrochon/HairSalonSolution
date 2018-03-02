@@ -9,7 +9,7 @@
 User Stories:
 
 Expected Behaviors:
-  Employee can see a list of all our stylists.
+  Employee can see a list of all stylists.
 	Employee can select a stylist, see their details, and see a list of all clients that belong to that stylist.
   Employee can add a client to a specific stylist.
   Employee can delete all stylists and/or clients from the database.
