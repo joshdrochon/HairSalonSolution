@@ -24,7 +24,7 @@ namespace HairSalonProject.Tests
     }
 
     [TestMethod]
-    public void Get_AllDatabaseEmptyAtFirst_0()
+    public void GetAll_AllDatabaseEmptyAtFirst_0()
     {
       //Arrange
       int result = Specialty.GetAll().Count;
@@ -44,6 +44,23 @@ namespace HairSalonProject.Tests
       //Assert
       Assert.AreEqual(actualResult, expectedResult);
     }
+
+    [TestMethod]
+    public void GetAll_GetsAllSpecialtiesFromDataBase_2()
+    {
+      //Arrange
+      Specialty testSpecialty1 = new Specialty("Loctician", "Description...");
+      Specialty testSpecialty2 = new Specialty("Long Hair", "Description...");
+      testSpecialty1.Save();
+      testSpecialty2.Save();
+      //Act
+      List<Specialty> actualResult = Specialty.GetAll();
+      List<Specialty> expectedResult = new List<Specialty>
+      {testSpecialty1, testSpecialty2};
+      //Assert
+      CollectionAssert.AreEqual(actualResult, expectedResult);
+    }
+
 
 
   }
