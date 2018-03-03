@@ -33,7 +33,7 @@ namespace HairSalonProject.Tests
     }
 
     [TestMethod]
-    public void Save_AssignsIdToObject_Id()
+    public void Find_AssignsIdToObject_Id()
     {
       //Arrange
       Stylist testStylist = new Stylist

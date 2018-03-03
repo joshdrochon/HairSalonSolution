@@ -74,6 +74,20 @@ namespace HairSalonProject.Tests
       Assert.AreEqual(0, result);
     }
 
+    [TestMethod]
+    public void Find_AssignsIdToObjectId_Specialty()
+    {
+      //Arrange
+      Specialty testSpecialty = new Specialty("x", "y");
+      testSpecialty.Save();
+      //Act
+      Specialty savedSpecialty = Specialty.GetAll()[0];
+      int result = savedSpecialty.GetId();
+      int testId = testSpecialty.GetId();
+      //Assert
+      Assert.AreEqual(result, testId);
+    }
+
 
 
   }
