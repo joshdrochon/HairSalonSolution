@@ -140,24 +140,24 @@ namespace HairSalonProject.Models
       return allStylists;
     }
 
-    public void Delete()
-    {
-      MySqlConnection conn = DB.Connection();
-      conn.Open();
-
-      MySqlCommand cmd = new MySqlCommand("DELETE FROM stylist WHERE id = @StylistId; DELETE FROM specialty_stylist WHERE stylist_id = @StylistId;", conn);
-      MySqlParameter stylistIdParameter = new MySqlParameter();
-      stylistIdParameter.ParameterName = "@StylistId";
-      stylistIdParameter.Value = this.GetId();
-
-      cmd.Parameters.Add(stylistIdParameter);
-      cmd.ExecuteNonQuery();
-
-      if (conn != null)
-      {
-        conn.Close();
-      }
-    }
+    // public void Delete()
+    // {
+    //   MySqlConnection conn = DB.Connection();
+    //   conn.Open();
+    //
+    //   MySqlCommand cmd = new MySqlCommand("DELETE FROM stylist WHERE id = @StylistId; DELETE FROM specialty_stylist WHERE stylist_id = @StylistId;", conn);
+    //   MySqlParameter stylistIdParameter = new MySqlParameter();
+    //   stylistIdParameter.ParameterName = "@StylistId";
+    //   stylistIdParameter.Value = this.GetId();
+    //
+    //   cmd.Parameters.Add(stylistIdParameter);
+    //   cmd.ExecuteNonQuery();
+    //
+    //   if (conn != null)
+    //   {
+    //     conn.Close();
+    //   }
+    // }
 
     public static void DeleteAll()
     {
@@ -267,12 +267,12 @@ namespace HairSalonProject.Models
 
       MySqlParameter specialty_id = new MySqlParameter();
       specialty_id.ParameterName = "@SpecialtyId";
-      specialty_id.Value = this._id;
+      specialty_id.Value = newSpecialty.GetId();
       cmd.Parameters.Add(specialty_id);
 
       MySqlParameter stylist_id = new MySqlParameter();
       stylist_id.ParameterName = "@StylistId";
-      stylist_id.Value = this._id;
+      stylist_id.Value = _id;
       cmd.Parameters.Add(stylist_id);
 
       cmd.ExecuteNonQuery();
@@ -323,7 +323,7 @@ namespace HairSalonProject.Models
               string specialtyTitle = specialtyQueryRdr.GetString(1);
               string specialtyDescription = specialtyQueryRdr.GetString(2);
 
-              Specialty foundSpecialty = new Specialty(specialtyTitle, specialtyDescription, thisSpecialtyId );
+              Specialty foundSpecialty = new Specialty(specialtyTitle, specialtyDescription, thisSpecialtyId);
               specialties.Add(foundSpecialty);
             }
 
