@@ -61,6 +61,19 @@ namespace HairSalonProject.Tests
       CollectionAssert.AreEqual(actualResult, expectedResult);
     }
 
+    [TestMethod]
+    public void DeleteAll_DeletesAllSpecialtiesFromDataBase_0()
+    {
+      //Arrange
+      Specialty newSpecialty1 = new Specialty("Some Title", "Some description...");
+      Specialty newSpecialty2 = new Specialty("Another Title", "Another description...");
+      //Act
+      Specialty.DeleteAll();
+      int result = Specialty.GetAll().Count;
+      //Assert
+      Assert.AreEqual(0, result);
+    }
+
 
 
   }
