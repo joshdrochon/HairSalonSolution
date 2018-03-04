@@ -209,12 +209,12 @@ namespace HairSalonProject.Models
 
       MySqlParameter specialty_id = new MySqlParameter();
       specialty_id.ParameterName = "@SpecialtyId";
-      specialty_id.Value = this._id;
+      specialty_id.Value = _id;
       cmd.Parameters.Add(specialty_id);
 
       MySqlParameter stylist_id = new MySqlParameter();
       stylist_id.ParameterName = "@StylistId";
-      stylist_id.Value = this._id;
+      stylist_id.Value = newStylist.GetId();
       cmd.Parameters.Add(stylist_id);
 
       cmd.ExecuteNonQuery();
