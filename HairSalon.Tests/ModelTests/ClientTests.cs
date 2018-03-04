@@ -31,6 +31,38 @@ namespace HairSalonProject.Tests
       Assert.AreEqual(0, result);
     }
 
+    [TestMethod]
+    public void Delete_DeletesIndividualClientFromDataBase()
+    {
+      //Arrange
+      Client testClient1 = new Client("x", "y", "z");
+      testClient1.Save();
+      Client testClient2 = new Client("m", "v", "c");
+      testClient2.Save();
+
+      //Act
+      testClient2.Delete(testClient2.GetId());
+
+      int actualResult = Client.GetAll().Count;
+      int expectedResult = 1;
+
+      //Assert
+      Assert.AreEqual(actualResult, expectedResult);
+    }
+
+    [TestMethod]
+    public void DeleteAll_DeletesAllClientsFromDataBase_0()
+    {
+      //Arrange
+      Client newClient1 = new Client("x", "y", "z");
+      Client newClient2 = new Client("a", "b", "c");
+      //Act
+      Client.DeleteAll();
+      int result = Client.GetAll().Count;
+      //Assert
+      Assert.AreEqual(0, result);
+    }
+
 
     [TestMethod]
     public void Save_SavesClientToDataBase_Client()
@@ -48,6 +80,21 @@ namespace HairSalonProject.Tests
       Console.WriteLine(actualResult);
     }
 
+    [TestMethod]
+    public void GetAll_GetsAllClientsFromDataBase_2()
+    {
+      //Arrange
+      Client testClient1 = new Client("Name", "Email", "FirstAppt");
+      Client testClient2 = new Client("Name", "Email", "FirstAppt");
+      testClient1.Save();
+      testClient2.Save();
+      //Act
+      List<Client> actualResult = Client.GetAll();
+      List<Client> expectedResult = new List<Client>
+      {testClient1, testClient2};
+      //Assert
+      CollectionAssert.AreEqual(actualResult, expectedResult);
+    }
 
     [TestMethod]
     public void Save_AssignsIdToObject_Id()

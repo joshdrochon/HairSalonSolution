@@ -123,25 +123,25 @@ namespace HairSalonProject.Models
       return allSpecialties;
     }
 
-    // public void Delete()
-    // {
-    //   MySqlConnection conn = DB.Connection();
-    //   conn.Open();
-    //
-    //   MySqlCommand cmd = new MySqlCommand
-    //   ("DELETE FROM specialty WHERE id = @SpecialtyId; DELETE FROM specialty_stylist WHERE specialty_id = @SpecialtyId;", conn);
-    //   MySqlParameter specialtyIdParameter = new MySqlParameter();
-    //   specialtyIdParameter.ParameterName = "@SpecialtyId";
-    //   specialtyIdParameter.Value = this.GetId();
-    //
-    //   cmd.Parameters.Add(specialtyIdParameter);
-    //   cmd.ExecuteNonQuery();
-    //
-    //   if (conn != null)
-    //   {
-    //     conn.Close();
-    //   }
-    // }
+    public void Delete()
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+
+      MySqlCommand cmd = new MySqlCommand
+      ("DELETE FROM specialty WHERE id = @SpecialtyId; DELETE FROM specialty_stylist WHERE specialty_id = @SpecialtyId;", conn);
+      MySqlParameter specialtyIdParameter = new MySqlParameter();
+      specialtyIdParameter.ParameterName = "@SpecialtyId";
+      specialtyIdParameter.Value = this.GetId();
+
+      cmd.Parameters.Add(specialtyIdParameter);
+      cmd.ExecuteNonQuery();
+
+      if (conn != null)
+      {
+        conn.Close();
+      }
+    }
 
     public static void DeleteAll()
     {

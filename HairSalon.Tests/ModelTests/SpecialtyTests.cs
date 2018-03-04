@@ -62,6 +62,30 @@ namespace HairSalonProject.Tests
     }
 
     [TestMethod]
+    public void Delete_DeletesSpecialtyAssociationsFromDatabase_SpecialtyList()
+    {
+      //Arrange
+      Stylist testStylist = new Stylist("x", "y", "z");
+      testStylist.Save();
+
+      string testTitle = "Loctician";
+      string testDescription = "Specializing in dreadlocks.";
+
+      Specialty testSpecialty = new Specialty(testTitle, testDescription);
+      testSpecialty.Save();
+
+      //Act
+      testSpecialty.AddStylist(testStylist);
+      testSpecialty.Delete();
+
+      List<Specialty> resultStylistSpecialties = testStylist.GetSpecialties();
+      List<Specialty> testStylistSpecialties = new List<Specialty> {};
+
+      //Assert
+      CollectionAssert.AreEqual(testStylistSpecialties, resultStylistSpecialties);
+    }
+
+    [TestMethod]
     public void DeleteAll_DeletesAllSpecialtiesFromDataBase_0()
     {
       //Arrange

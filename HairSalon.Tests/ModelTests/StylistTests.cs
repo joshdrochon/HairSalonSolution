@@ -33,6 +33,44 @@ namespace HairSalonProject.Tests
     }
 
     [TestMethod]
+    public void Delete_DeletesStylistAssociationsFromDatabase_StylistList()
+    {
+      //Arrange
+      Specialty testSpecialty = new Specialty("Title", "Description");
+      testSpecialty.Save();
+
+      string testName = "Bill";
+      string testEmail = "B52@gmail.com";
+      string testStartDate = "12/12/2012";
+
+      Stylist testStylist = new Stylist(testName, testEmail, testStartDate);
+      testStylist.Save();
+
+      //Act
+      testStylist.AddSpecialty(testSpecialty);
+      testStylist.Delete();
+
+      List<Stylist> resultSpecialtyStylists = testSpecialty.GetStylists();
+      List<Stylist> testSpecialtyStylists = new List<Stylist> {};
+
+      //Assert
+      CollectionAssert.AreEqual(testSpecialtyStylists, resultSpecialtyStylists);
+    }
+
+    [TestMethod]
+    public void DeleteAll_DeletesAllStylistsFromDataBase_0()
+    {
+      //Arrange
+      Stylist newStylist1 = new Stylist("x", "y", "z");
+      Stylist newStylist2 = new Stylist("a", "b", "c");
+      //Act
+      Stylist.DeleteAll();
+      int result = Stylist.GetAll().Count;
+      //Assert
+      Assert.AreEqual(0, result);
+    }
+
+    [TestMethod]
     public void Find_AssignsIdToObject_Id()
     {
       //Arrange
@@ -66,6 +104,23 @@ namespace HairSalonProject.Tests
       Console.WriteLine(expectedResult);
       Console.WriteLine(actualResult);
     }
+
+    [TestMethod]
+    public void GetAll_GetsAllStylistsFromDataBase_2()
+    {
+      //Arrange
+      Stylist testStylist1 = new Stylist("x", "y", "z");
+      Stylist testStylist2 = new Stylist("a", "b", "c");
+      testStylist1.Save();
+      testStylist2.Save();
+      //Act
+      List<Stylist> actualResult = Stylist.GetAll();
+      List<Stylist> expectedResult = new List<Stylist>
+      {testStylist1, testStylist2};
+      //Assert
+      CollectionAssert.AreEqual(actualResult, expectedResult);
+    }
+
 
     [TestMethod]
     public void Find_FindsStylestInDatabase_Stylist()
