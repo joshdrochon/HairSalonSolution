@@ -111,9 +111,27 @@ namespace HairSalonProject.Tests
     [TestMethod]
     public void GetStylists_ReturnsAllStylistsFromDataBase()
     {
-      //Arrage
+      //Arrange
+      Specialty testSpecialty = new Specialty
+      ("Hair Coloring", "Specializes in hair coloring of textures.");
+      testSpecialty.Save();
+
+      Stylist testStylist1 = new Stylist
+      ("Jim", "Kirk@gmail.com", "03/14/1988");
+      testStylist1.Save();
+
+      Stylist testStylist2 = new Stylist
+      ("John", "john@gmail.com", "06/17/2049");
+      testStylist2.Save();
+
       //Act
+      testSpecialty.AddStylist(testStylist1);
+      testSpecialty.AddStylist(testStylist2);
+      List<Stylist> testList = new List<Stylist> {testStylist1, testStylist2};
+      List<Stylist> savedStylists = testSpecialty.GetStylists();
+
       //Assert
+      CollectionAssert.AreEqual(testList, savedStylists);
     }
 
 
