@@ -17,3 +17,15 @@
     <button class="btn btn-success" type="submit">Submit</button>
   </form>
 </div>
+
+<div id="cancel">
+  <button id="cancel-btn"/>Cancel</button>
+</div>
+
+<script>
+  $(document).ready(function(){
+    $("#cancel-btn").click(function(event) {
+      window.location = "/";
+    });
+  });
+</script>

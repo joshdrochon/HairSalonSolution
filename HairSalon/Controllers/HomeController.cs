@@ -32,6 +32,14 @@ namespace HairSalonProject.Controllers
 
              newStylist.Save(); //must save to database  for getAll method to grab it
 
+             IEnumerable<String> checkedSpecialties = Request.Form["stylist-specialty"];
+
+             foreach(var specialty in checkedSpecialties)
+             {
+                Specialty thisSpecialty = Specialty.Find(Int32.Parse(specialty));
+                thisSpecialty.AddStylist(newStylist);
+             }
+
              List<Stylist> allStylists = Stylist.GetAll();
 
             return View("Index", allStylists);
@@ -51,6 +59,49 @@ namespace HairSalonProject.Controllers
 
             return View(stylist);
         }
+
+        //Specialty Controllers
+
+        [HttpGet("/specialties/new")]
+        public ActionResult NewSpecialtyForm()
+        {
+          return View(); //returns NewSpecialtyForm
+        }
+
+        [HttpPost("/specialties")]
+        public ActionResult CreateSpecialty()
+        {
+            Specialty newSpecialty = new Specialty
+            (Request.Form["specialty-title"],
+             Request.Form["specialty-description"]);
+
+             newSpecialty.Save();
+
+             List<Specialty> allSpecialties = Specialty.GetAll();
+
+             return View("AllSpecialties", allSpecialties);
+        }
+
+        [HttpGet("/specialties/{id}")]
+        public ActionResult SpecialtyDetails(int id)
+        {
+          Specialty specialty = Specialty.Find(id);
+          return View(specialty);
+        }
+
+        [HttpGet("/specialties")]
+        public ActionResult AllSpecialties()
+        {
+          return View(Specialty.GetAll());
+        }
+
+        [HttpPost("/specialties/delete")]
+        public ActionResult DeleteAllSpecialties()
+        {
+          Specialty.DeleteAll();
+          return View();
+        }
+
 
         //Client Controllers
 

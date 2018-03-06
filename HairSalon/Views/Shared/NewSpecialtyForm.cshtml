@@ -1,0 +1,23 @@
+@{
+  Layout = "_Layout";
+}
+
+<div class="jumbotron">
+  <form action="/specialties" method="post">
+    Title: <input name="specialty-title" type="text" required>
+    Description: <input name="specialty-description" type="text" required>
+    <button class="btn btn-success" type="submit">Submit</button>
+  </form>
+</div>
+
+<div id="cancel">
+  <button id="cancel-btn"/>Cancel</button>
+</div>
+
+<script>
+  $(document).ready(function(){
+    $("#cancel-btn").click(function(event) {
+      window.location = "/";
+    });
+  });
+</script>

@@ -1,0 +1,24 @@
+@using HairSalonProject.Models;
+
+@{
+  Layout = "_Layout";
+}
+
+<div class="jumbotron">
+  <p><a href='/'>Home</a></p>
+  <p><text>Title: </text>@Model.GetTitle()</p>
+  <p><text>Description: </text>@Model.GetDescription()</p>
+
+  <hr>
+  <p><text>Stylists with this specialty:</p>
+    @foreach(var stylist in Model.GetStylists())
+    {
+      <li>Stylist.GetName()</li>
+    }
+</div>
+
+<!-- <a href='/clients/new'>Add stylist</a> -->
+
+
+<!-- Model refers to whatever is passed into the View's parameters.
+In this case it's return View(client); -->

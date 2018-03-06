@@ -1,0 +1,29 @@
+@{
+  Layout = "_Layout";
+}
+
+<div class="jumbotron">
+  <p><a href="/">Home</a></p>
+  <h1>Specialties</h1>
+  @foreach(var specialty in Model)
+  {
+    <h4 id="specialty-list"><a href='/specialties/@specialty.GetId()'>@specialty.GetTitle()</a></h4>
+  }
+</div>
+
+<div class="footer">
+  <form action="/specialties/delete" method="post" id="clear-specialties">
+    <button class="btn btn-danger" type="submit" name="button">Clear all Specialties</button>
+  </form>
+</div>
+
+<script>
+  $(document).ready(function(){
+    $("#clear-specialties").submit(function(event) {
+      var doDelete = confirm("Are you sure you want delete all specialties?");
+      if (!doDelete) {
+        event.preventDefault();
+      }
+    });
+  });
+</script>

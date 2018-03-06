@@ -14,8 +14,14 @@
     }
   </ul>
   <p><a href="/clients/new">Add Client</a></p>
-
-  <!-- <a href='/stylists/new'>Add stylist</a> -->
+  <p>Specialties:</p>
+  <ul>
+    @foreach(var specialty in Model.GetSpecialties())
+    {
+      <li>@specialty.GetTitle()</li>
+    }
+  </ul>
+  <p><a href="/specialties/new">Add Specialty</a></p>
 </div>
 
 <!-- Model refers to whatever is passed into the View's parameters. In this case it's return View(stylist); -->

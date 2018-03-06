@@ -1,3 +1,5 @@
+@using HairSalonProject.Models;
+
 @{
   Layout = "_Layout";
 }
@@ -7,6 +9,24 @@
     Name: <input name="stylist-name" type="text" required>
     Email: <input name="stylist-email" type="email" required>
     Startdate: <input name="stylist-startdate" type="date" required>
+    Specialties:
+    @foreach(var specialty in Specialty.GetAll())
+    {
+      <input type="checkbox" value="@specialty.GetId()" name="stylist-specialty">@specialty.GetTitle()
+    }
     <button class="btn btn-success" type="submit">Add Stylist</button>
   </form>
 </div>
+
+
+<div id="cancel">
+  <button id="cancel-btn"/>Cancel</button>
+</div>
+
+<script>
+  $(document).ready(function(){
+    $("#cancel-btn").click(function(event) {
+      window.location = "/";
+    });
+  });
+</script>

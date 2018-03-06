@@ -17,7 +17,10 @@ body{
 
 #all-clients{
   color: lightgray;
+}
 
+#all-specialties{
+  color: lightgray;
 }
 
 form{
@@ -54,4 +57,8 @@ a:hover{
 ul li{
  font-size: 20px;
  font-weight: normal;
+}
+
+#cancel{
+  text-align: center;
 }
