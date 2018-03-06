@@ -6,18 +6,21 @@
 <div class="jumbotron">
   <p><a id="all-clients" href="/clients">View all clients</a></p>
   <p><a id="all-specialties" href="/specialties">View all specialties</a></p>
+  <p style="display:inline-block;"><a href="/specialties/new">Add specialty</a></p>
   <h1>Stylists</h1>
     @foreach (var stylist in Model)
     {
       <h3 id="stylist-list"><a href='/stylists/@stylist.GetId()'>@stylist.GetName()</a></h3>
     }
-  <p><a href="/stylists/new">Add Stylist</a></p>
+  <p style="display:inline-block;"><a href="/stylists/new">Add Stylist</a></p>
 </div>
+
 <div class="footer">
   <form action="/stylists/delete" id="clear-stylists" method="post">
     <button class="btn btn-danger" type="submit" name="button">Clear all Stylists</button>
   </form>
 </div>
+
 
 <script>
   $(document).ready(function(){

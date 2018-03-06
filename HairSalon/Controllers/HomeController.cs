@@ -52,11 +52,18 @@ namespace HairSalonProject.Controllers
             return View(); //if not defined, attempts to map method name to a page w/ the same name
         }
 
+        [HttpPost("/stylists/{id}/delete")]
+        public ActionResult DeleteStylist(int id)
+        {
+            Stylist thisStylist = Stylist.Find(id);
+            thisStylist.Delete();
+            return View();
+        }
+
         [HttpGet("/stylists/{id}")]
         public ActionResult StylistDetails(int id)
         {
             Stylist stylist = Stylist.Find(id);
-
             return View(stylist);
         }
 

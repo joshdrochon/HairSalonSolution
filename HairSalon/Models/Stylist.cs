@@ -144,11 +144,10 @@ namespace HairSalonProject.Models
     {
       MySqlConnection conn = DB.Connection();
       conn.Open();
-
       MySqlCommand cmd = new MySqlCommand("DELETE FROM stylist WHERE id = @StylistId; DELETE FROM specialty_stylist WHERE stylist_id = @StylistId;", conn);
-      MySqlParameter stylistIdParameter = new MySqlParameter();
-      stylistIdParameter.ParameterName = "@StylistId";
-      stylistIdParameter.Value = this.GetId();
+      MySqlParameter stylistIdParameter = new MySqlParameter("@StylistId", this.GetId());
+      // stylistIdParameter.ParameterName = "@StylistId";
+      // stylistIdParameter.Value = this.GetId();
 
       cmd.Parameters.Add(stylistIdParameter);
       cmd.ExecuteNonQuery();
@@ -205,10 +204,8 @@ namespace HairSalonProject.Models
         stylistEmail = rdr.GetString(2);
         stylistStartDate = rdr.GetString(3);
       }
-
-      Stylist foundStylist = new Stylist
-      (stylistName, stylistEmail, stylistStartDate, stylistId);
-
+      Stylist foundStylist = new Stylist(stylistName, stylistEmail, stylistStartDate, stylistId);
+      Console.WriteLine(foundStylist.GetId());
       conn.Close();
       if(conn != null)
       {

@@ -58,6 +58,27 @@ namespace HairSalonProject.Tests
     }
 
     [TestMethod]
+    public void Delete_DeletesIndividualStylist_1()
+    {
+      Stylist newStylist1 = new Stylist("x", "y", "z");
+      Stylist newStylist2 = new Stylist("a", "b", "c");
+      newStylist1.Save();
+      newStylist2.Save();
+
+      int currentStylists = Stylist.GetAll().Count;
+      Console.WriteLine("There are currently " + currentStylists + " stylists  in the database.");
+
+      newStylist2.Delete();
+
+      int updatedStylists = Stylist.GetAll().Count;
+      Console.WriteLine("There is now " + updatedStylists + " stylist in the database.");
+
+      int result = Stylist.GetAll().Count;
+
+      Assert.AreEqual(1, result);
+    }
+
+    [TestMethod]
     public void DeleteAll_DeletesAllStylistsFromDataBase_0()
     {
       //Arrange
