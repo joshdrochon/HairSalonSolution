@@ -10,11 +10,12 @@
   <p><text>Description: </text>@Model.GetDescription()</p>
 
   <hr>
-  <p><text>Stylists with this specialty:</p>
+  <p>Stylists with this specialty:</p>
     @foreach(var stylist in Model.GetStylists())
     {
-      <li>@stylist.GetName()</li>
+      <p class="left-shift">@stylist.GetName()</p>
     }
+    <p class="left-shift"><a href="/stylists/new">Add</a></p>
 </div>
 
 <!-- <a href='/clients/new'>Add stylist</a> -->

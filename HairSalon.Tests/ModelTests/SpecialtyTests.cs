@@ -33,6 +33,24 @@ namespace HairSalonProject.Tests
     }
 
     [TestMethod]
+    public void EditName_UpdatesStylistInDatabase_String()
+    {
+      //Arrange
+      string originalName = "Samuel L. Jackson";
+      Stylist testStylist = new Stylist(originalName, "", "", 1);
+      testStylist.Save();
+      string updatedName = "James Bond";
+
+      //Act
+      testStylist.EditName(updatedName);
+      string result = Stylist.Find(testStylist.GetId()).GetName();
+      //because Find method returns a Stylist we can call GetName on it
+
+      //Assert
+      Assert.AreEqual(updatedName , result);
+    }
+
+    [TestMethod]
     public void Save_SavesSpecialtyToDataBase_Specialty()
     {
       //Arrange

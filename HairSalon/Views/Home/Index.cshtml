@@ -4,15 +4,16 @@
 
 <!--each new list item is an instance of the Stylist class-->
 <div class="jumbotron">
+  <h1 id="salon-name">Snappy Snips</h1>
   <p><a id="all-clients" href="/clients">View all clients</a></p>
   <p><a id="all-specialties" href="/specialties">View all specialties</a></p>
   <p style="display:inline-block;"><a href="/specialties/new">Add specialty</a></p>
-  <h1>Stylists</h1>
+  <h2>Stylists</h2>
     @foreach (var stylist in Model)
     {
       <h3 id="stylist-list"><a href='/stylists/@stylist.GetId()'>@stylist.GetName()</a></h3>
     }
-  <p style="display:inline-block;"><a href="/stylists/new">Add Stylist</a></p>
+  <p class="left-shift" style="display:inline-block;"><a href="/stylists/new">Add</a></p>
 </div>
 
 <div class="footer">

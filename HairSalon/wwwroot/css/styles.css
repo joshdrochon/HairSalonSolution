@@ -62,3 +62,11 @@ ul li{
 #cancel{
   text-align: center;
 }
+
+.jumbotron #salon-name{
+  text-align: center;
+}
+
+.left-shift{
+  margin-left: 20px;
+}

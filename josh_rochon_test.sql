@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.7
+-- version 4.6.5.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Mar 06, 2018 at 05:09 AM
--- Server version: 5.6.38
--- PHP Version: 7.2.1
+-- Generation Time: Mar 07, 2018 at 01:25 AM
+-- Server version: 5.6.35
+-- PHP Version: 7.0.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -65,22 +65,64 @@ CREATE TABLE `specialty_stylist` (
 --
 
 INSERT INTO `specialty_stylist` (`id`, `specialty_id`, `stylist_id`) VALUES
-(235, 309, 354),
-(236, 309, 355),
-(237, 310, 356),
-(238, 310, 357),
-(240, 312, 365),
-(241, 313, 365),
-(242, 314, 366),
-(243, 315, 366),
-(245, 6, 2),
-(246, 6, 3),
-(247, 7, 4),
-(248, 7, 5),
-(250, 9, 13),
-(251, 10, 13),
-(252, 11, 14),
-(253, 12, 14);
+(272, 35, 42),
+(273, 36, 42),
+(275, 42, 44),
+(276, 42, 45),
+(277, 43, 46),
+(278, 43, 47),
+(280, 45, 57),
+(281, 46, 57),
+(282, 47, 58),
+(283, 48, 58),
+(285, 54, 60),
+(286, 54, 61),
+(287, 55, 62),
+(288, 55, 63),
+(290, 57, 73),
+(291, 58, 73),
+(292, 59, 74),
+(293, 60, 74),
+(295, 66, 76),
+(296, 66, 77),
+(297, 67, 78),
+(298, 67, 79),
+(300, 69, 89),
+(301, 70, 89),
+(302, 71, 90),
+(303, 72, 90),
+(305, 78, 92),
+(306, 78, 93),
+(307, 79, 94),
+(308, 79, 95),
+(310, 81, 105),
+(311, 82, 105),
+(312, 83, 106),
+(313, 84, 106),
+(315, 90, 108),
+(316, 90, 109),
+(317, 91, 110),
+(318, 91, 111),
+(320, 93, 121),
+(321, 94, 121),
+(322, 95, 122),
+(323, 96, 122),
+(325, 102, 124),
+(326, 102, 125),
+(327, 103, 126),
+(328, 103, 127),
+(330, 105, 137),
+(331, 106, 137),
+(332, 107, 138),
+(333, 108, 138),
+(335, 114, 140),
+(336, 114, 141),
+(337, 115, 142),
+(338, 115, 143),
+(340, 117, 153),
+(341, 118, 153),
+(342, 119, 154),
+(343, 120, 154);
 
 -- --------------------------------------------------------
 
@@ -131,26 +173,22 @@ ALTER TABLE `stylist`
 -- AUTO_INCREMENT for table `client`
 --
 ALTER TABLE `client`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
 --
 -- AUTO_INCREMENT for table `specialty`
 --
 ALTER TABLE `specialty`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
 --
 -- AUTO_INCREMENT for table `specialty_stylist`
 --
 ALTER TABLE `specialty_stylist`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=254;
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=344;
 --
 -- AUTO_INCREMENT for table `stylist`
 --
 ALTER TABLE `stylist`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=155;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
