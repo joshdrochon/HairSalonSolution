@@ -13,7 +13,7 @@
       <li>@client.GetName()</li>
     }
   </ul>
-  <p><a href="/clients/new">Add Client</a></p>
+  <p class="left-shift"><a href="/clients/new">Add</a></p>
   <p>Specialties:</p>
   <ul>
     @foreach(var specialty in Model.GetSpecialties())
@@ -21,7 +21,7 @@
       <li>@specialty.GetTitle()</li>
     }
   </ul>
-  <p><a href="/specialties/new">Add Specialty</a></p>
+  <p class="left-shift"><a href="/specialties/new">Add</a></p>
 </div>
 <form action="/stylists/@Model.GetId()/delete" method="post">
   <button class="btn btn-danger" type="submit" name="button">Remove Stylist</button>

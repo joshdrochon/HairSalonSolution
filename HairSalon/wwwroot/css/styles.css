@@ -1,3 +1,7 @@
+{
+  border: 1px solid red;
+}
+
 body{
   background-color: #7E8F7C;
 }
@@ -69,4 +73,9 @@ ul li{
 
 .left-shift{
   margin-left: 20px;
+}
+
+#edit{
+  font-size: 15px;
+  color: darkgray;
 }

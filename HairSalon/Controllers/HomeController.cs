@@ -45,6 +45,28 @@ namespace HairSalonProject.Controllers
             return View("Index", allStylists);
         }
 
+        [HttpGet("/stylists/{id}/update")]
+        public ActionResult UpdateStylistForm(int id)
+        {
+          Stylist thisStylist = Stylist.Find(id);
+          return View(thisStylist);
+        }
+
+        [HttpPost("/stylists/{id}/update")]
+        public ActionResult Update(int id)
+        {
+          Stylist thisStylist = Stylist.Find(id);
+          thisStylist.EditName(Request.Form["newname"]);
+          return RedirectToAction("Index");
+        }
+
+
+
+
+
+
+
+
         [HttpPost("/stylists/delete")]
         public ActionResult DeleteAllStylists()
         {
