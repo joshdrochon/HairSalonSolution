@@ -53,19 +53,12 @@ namespace HairSalonProject.Controllers
         }
 
         [HttpPost("/stylists/{id}/update")]
-        public ActionResult Update(int id)
+        public ActionResult UpdateStylist(int id)
         {
           Stylist thisStylist = Stylist.Find(id);
-          thisStylist.EditName(Request.Form["newname"]);
+          thisStylist.EditName(Request.Form["new-name"]);
           return RedirectToAction("Index");
         }
-
-
-
-
-
-
-
 
         [HttpPost("/stylists/delete")]
         public ActionResult DeleteAllStylists()
@@ -156,6 +149,21 @@ namespace HairSalonProject.Controllers
              List<Client> allClients = Client.GetAll();
 
              return View("AllClients", allClients);
+        }
+
+        [HttpGet("/clients/{id}/update")]
+        public ActionResult UpdateClientForm(int id)
+        {
+          Client thisClient = Client.Find(id);
+          return View(thisClient);
+        }
+
+        [HttpPost("/clients/{id}/update")]
+        public ActionResult UpdateClient(int id)
+        {
+          Client thisClient = Client.Find(id);
+          thisClient.Edit(Request.Form["new-name"], Request.Form["new-email"], Request.Form["new-first-appt"]);
+          return RedirectToAction("Index");
         }
 
         [HttpPost("/clients/delete")]

@@ -1,10 +1,14 @@
+@using HairSalonProject.Models
+
 @{
   Layout = "_Layout";
 }
 <div class="jumbotron">
   <p><a href="/">Home</a></p>
-  <form style="display:inline-block;" action="/stylists/@Model.GetId()/update" method="post">
-    <input type="text" name="new-name" placeholder=" @Model.GetName()">
+  <form style="display:inline-block;" action="/clients/@Model.GetId()/update" method="post">
+    Name: <input type="text" name="new-name" required>
+    Email: <input type="text" name="new-email" required>
+    First Appt: <input type="date" name="new-first-appt" required>
     <button class="btn btn-success" type="submit">Confirm</button>
   </form>
 </div>

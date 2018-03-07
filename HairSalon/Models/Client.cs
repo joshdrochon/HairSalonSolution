@@ -164,7 +164,9 @@ namespace HairSalonProject.Models
       MySqlConnection conn = DB.Connection();
       conn.Open();
       var cmd = conn.CreateCommand() as MySqlCommand;
-      cmd.CommandText = @"UPDATE stylist SET name = @newName WHERE id = @searchId;";
+      cmd.CommandText = @"UPDATE client SET name = @newName WHERE id = @searchId;
+      UPDATE client SET email = @newEmail WHERE id = @searchId;
+      UPDATE client SET firstappt = @newFirstAppt WHERE id = @searchId;";
 
       MySqlParameter searchId = new MySqlParameter();
       searchId.ParameterName = "@searchId";
@@ -176,8 +178,17 @@ namespace HairSalonProject.Models
       name.Value = newName;
       cmd.Parameters.Add(name);
 
+      MySqlParameter email = new MySqlParameter();
+      email.ParameterName = "@newEmail";
+      email.Value = newEmail;
+      cmd.Parameters.Add(email);
+
+      MySqlParameter firstappt = new MySqlParameter();
+      firstappt.ParameterName = "@newFirstAppt";
+      firstappt.Value = newFirstAppt;
+      cmd.Parameters.Add(firstappt);
+
       cmd.ExecuteNonQuery();
-      _name = newName;
 
       conn.Close();
       if (conn != null)

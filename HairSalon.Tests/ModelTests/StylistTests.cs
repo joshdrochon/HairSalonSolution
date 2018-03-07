@@ -219,16 +219,31 @@ namespace HairSalonProject.Tests
       Specialty testSpecialty2 = new Specialty
       ("Women", "Specializes in women's hair.");
       testSpecialty2.Save();
-
       //Act
       testStylist.AddSpecialty(testSpecialty1);
       testStylist.AddSpecialty(testSpecialty2);
       List<Specialty> testList = new List<Specialty> {testSpecialty1, testSpecialty2};
       List<Specialty> savedSpecialties = testStylist.GetSpecialties();
-
-
       //Assert
       Assert.AreEqual(testList.Count, savedSpecialties.Count);
+    }
+
+    [TestMethod]
+    public void EditName_UpdatesNameInDatabase_String()
+    {
+      //Arrange
+      string originalName = "James Bond";
+      Stylist testStylist = new Stylist(originalName, "", "", 1);
+      testStylist.Save();
+      string updatedName = "Samwise the Brave";
+
+      //Act
+      testStylist.EditName(updatedName);
+
+      string result = Stylist.Find(testStylist.GetId()).GetName();
+
+      //Assert
+      Assert.AreEqual(updatedName , result);
     }
 
   }
